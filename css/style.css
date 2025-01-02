@@ -1,66 +1,39 @@
-.new-item{
-    border: 1px solid black;
-    height: 200px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 20px;
-    box-shadow: none;
-    border-radius: 10px;
 
-}
-.naw-icon{
-    text-decoration: none;
-}
 .new-item:hover{
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border: none;
 }
-.navbar-brand{
-    color: rgb(254, 254, 254);
-    font-size: 40px;
-    width: 800px;
-    margin-left: 40px;
-    font-weight: bold;
-    background-color: rgb(47, 9, 83); 
-    text-align: left;
-    
-}
 .navbar{
-    background-color: rgb(47, 9, 83);
+    background-color: rgb(98, 16, 174);
     height: 200px;
-   
+    border: none;
 }
 
-.new-item{
+
+.p1{    
   position: relative;
   z-index: 5;
-  top:-40px;
-  margin-bottom: 60px;
+  top:-70px;
   background-color: white;
-   padding-left: 10px; 
+   padding-left: 10px;
+   margin-left: 20px; 
 
 }
- .nev,#new-item ,a{
 
-    text-decoration:none;
-    font-weight: bold;
-    text-align: center;
-    color: rgb(47, 9, 9);
-   
-}
-.nev{
-  margin-left: 20px;
-}
+
 
 .cards1{
-    display: flex;
-    justify-content:space-around;
-    margin-top: 20px;
+    display: inline;
+    justify-content:center;
+   
+    margin-left: 20px;
+    
+    
+
 }
 .card:hover{
- box-shadow:rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; 
+ box-shadow:rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ cursor: pointer; 
 }
 .card-text{
     text-align: center;
@@ -71,6 +44,7 @@
 .card-title{
     text-align: center;
     color: rgb(16, 16, 17);
+   
 }
 
   
@@ -86,30 +60,56 @@
     padding:10px;
     box-shadow:none; 
   }
-  .btn[type=button]{
-    width: 150px;
+  .btn{
+    width: 100px;
     border-radius: 5px;
+    background-color: aquamarine;
   }
-  .icons{
-    display: flex;
-    justify-content:space-between;
-
-    width: 400px;
-    margin: 20px;
-   
+ 
+  .card{
     
+    height: 500px;
+    margin-top: 20px;
   }
+ 
   input[type=text]{
     width: 400px;
     align-items: center;
   }
-  .logoi{
-    width: 50px;
-    height: 50px;
+  
+  .bg{
+    background-color: black !important;
+    
+    /* border: 1px solid white; */
+  }
+  .bg1{
     background-color: white;
-    border-radius: 20px;
-    padding: 0%;
-   
+  }
+  .fontcolor{
+    color: white !important;
+    /* border: 1px solid white; */
     
   }
+  .btn:hover{
+    background-color: brown;
+    
+  }
+  .Order{
+    position: relative;
+    z-index: 5;
+    top:-50px;
+    background-color: white;
+    padding-left: 10px;
+    margin-left: 20px; 
+   
+   /* border-radius: 10px; */
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+  
+  }
+  .Order h1{
+    margin-bottom: 40px;
+    
+  }
+  
   
