@@ -1,38 +1,8 @@
-// $("#bright").on("click", function(e){
-    
-//     $("body").show().addClass('bg');
-//     $(".navbar2").show().addClass('bg');
-//     $(".navbar").show().addClass('bg');
-    // $(".new-item").show().addClass('bg');
-    // $(".card").show().addClass('bg');
-    
-    
-// })
 
-// $("#bright").on("click", function(e){
-    
-//     $("body").show().removeClass('bg1');
-//     $(".navbar2").show().removeClass('bg1');
-//     $(".navbar").show().removeClass('bg1');
-  
-// })
-
-// $("#bright").on("click", function(e){
-//     if($("body").hasClass("bg1")){
-//         $("body").addClass("bg")
-//     }
-//     else {
-
-//         $("body").addClass("bg1")
-//     }
-   
-    
-    
-// })
 
 $(document).ready(function(){
 
-    getCardItem();
+    renderCard();
 var categoryUrl="https://dummyjson.com/products/category-list";
 var productUrl="https://dummyjson.com/products/category/";
 var singalproductUrl="https://dummyjson.com/products/";
@@ -108,121 +78,80 @@ $(document).on("click", ".catelist", function () {
         data: {},
         success:function(product){
 
-            var productObj= {};
-            var productid =  product.id;
-            productObj.productid = product.id;
-            productObj.pname = product.title;
-            productObj.price = product.price;
-            productObj.Qty=1;
-            
-            if(localStorage.getItem("products")){
-               let productList = localStorage.getItem("products")
-               productList = JSON.parse(productList);
-               let Qty = productList.Qty;
-               Qty += 1;
-               productObj.Qty=Qty;
-               
-            }
-                localStorage.setItem("products",JSON.stringify(productObj));
-            
-            getCardItem();
+            updateCard(product)
+        },
+        error: function(){
+            console.log("somthing wrong")
         }
     })
   })
 })
-$(document).on("click","#remove",function(e){
-    if(confirm("Are you sure?")){
-        localStorage.removeItem("products");
-        // getCardItem();
+function updateCard(product){
+    const cart = loadCard();
+    const productIndex = cart.findIndex(item => item.id === product.id);
+    if(productIndex !== -1){
+        cart[productIndex].qty++;
+
+    }else{
+        cart.push({...product,qty:1});
     }
+    saveCard(cart);
+    renderCard();
+}
+function saveCard(cart){
+    localStorage.setItem("cart",JSON.stringify(cart));
+}
+
+function loadCard(){
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+$(document).on("click","#Clear",function(e){
+    if(confirm("Are you sure?")){
+       
+        localStorage.removeItem("cart");
+        renderCard();
+    }
+  
 })
 
 
-  function getCardItem(){
-    if(localStorage.getItem("products")){
-        var product = localStorage.getItem("products");
+  function renderCard(){
+    if(localStorage.getItem("cart")){
+        var product = localStorage.getItem("cart");
         product = JSON.parse(product);
         var html = '';
           var i = 1;
-        //   for(data in products){
+        product.forEach(data=>{
                 // console.log(data)
                 html += '<tr>';
                 html += '<td>'+i+'</td>';
-                html += '<td> '+product.pname+'</td>';
-                html += '<td>'+product.price+'</td>';
-                html += '<td>'+product.Qty+'</td>';
-                html += '<td> <a class="btn" href="#" id="remove" >Remove <a></td>'; 
+                html += '<td> '+data.title+'</td>';
+                html += '<td>'+data.price+'</td>';
+                html += '<td>'+data.qty+'</td>';
+                html += '<td> <a class="btn remove-item" href="#" data-id="' + data.id + '" >Remove <a></td>'; 
             html += '</tr>';
-        //   }
-          $("#card tbody").append(html)
+            i++;
+           })
+          $("#card tbody").html(html)
     }
   }
 
-
-
-
-// $("#bright").on("click", function(e){
-//     $(".card-title").show().addClass('fontcolor');
-//     $(".new-item,a").show().addClass('fontcolor');
-//     $(".card").show().addClass('fontcolor');
-// })
-
-
-
-// $("#bright").on("click", function(e){
+  $(document).on("click", ".remove-item", function (e) {
+    e.preventDefault(); 
+    var productId = $(this).data("id"); 
     
-//     $("body").toggle().addClass('bg');
-//     $(".navbar2").toggle().addClass('bg');
-//     $(".navbar").toggle().addClass('bg');
-//     $(".new-item").toggle().addClass('bg');
-//     $(".card").toggle().addClass('bg');
-    
-    
-// })
+    var cart = loadCard();
 
-
-
-
-// $("#bright").on("click", function(e){
-//     $(".card-title").toggle().addClass('fontcolor');
-//     $(".nev").toggle().addClass('fontcolor');
-//     $(".card").toggle().addClass('fontcolor');
-// })
-
-// $("#lunch").on("click", function(e){
-//     $(".card-1").show();
-//     $(".card").hide();
    
-// })
-// $("#Saland").on("click", function(e){
-//     $(".card-2").show();
-//     $(".card").hide();
-//     $(".card-1").hide();
-   
-// })   
+    cart = cart.filter(item => item.id !== productId);
+
+    
+    saveCard(cart);
+    renderCard();
+});
 
 
-// $(document).on("click",".catelist",function(){
-//     var val = $(this).attr("id");
-//     $.ajax({
-//         url: productUrl+val,
-//         method: "GET",
-//         data:{},
-//         success:function(response){
-//             var html = ""
-//             response.products.forEach(product  =>{
-//                  html += '<div class=" col lg-4 d-flex   col-sm-8 ">';
-//                 html += '<div class="card column  gap-3 mb-6 " id='+product.id+'   style="width: 20rem;" >';
-//                         html += '<img src='+product.thumbnail+' class="card-img-top img-fluid" alt="...">';
-//                         html += '<div class="card-body">';
-//                         html += '<h3 class="card-title">'+product.title+' </h3>';
-//                         html += '<h5 class="card-title">'+product.discountPercentage+' </h5>';
-//                         html += '<p class="card-text">'+product.price+'</p>';
-                       
-//                         html += '</div>';
-//                         html += '</div>';
-//             })
-//             $("#products").html(html);
-//         }
-//     });
-// });
+
+
+

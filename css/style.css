@@ -1,4 +1,5 @@
 
+
 .new-item:hover{
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border: none;
@@ -25,11 +26,7 @@
 .cards1{
     display: inline;
     justify-content:center;
-   
     margin-left: 20px;
-    
-    
-
 }
 .card:hover{
  box-shadow:rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -94,6 +91,7 @@
     background-color: brown;
     
   }
+  
   .Order{
     position: relative;
     z-index: 5;
@@ -108,8 +106,16 @@
   
   }
   .Order h1{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     
   }
   
+  .btn1{
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    margin-left: 300px;
+  }
+ 
   
