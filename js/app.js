@@ -3,9 +3,9 @@
 $(document).ready(function(){
 
     renderCard();
-var categoryUrl="https://dummyjson.com/products/category-list";
-var productUrl="https://dummyjson.com/products/category/";
-var singalproductUrl="https://dummyjson.com/products/";
+    var categoryUrl="https://dummyjson.com/products/category-list";
+    var productUrl="https://dummyjson.com/products/category/";
+    var singalproductUrl="https://dummyjson.com/products/";
 // // get category list
 
 $.ajax({
@@ -16,15 +16,15 @@ $.ajax({
         let html = "";
         var i =0;
         response.forEach(cat => {
-            if(i < 5){
+            if(i < 7){
             
                 let formattedCat = cat.replace(/-/g, ' ')
                                     .toLowerCase()
                                     .split(' ')
                                     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                                     .join(' ');
-                                    html += '<div class="card p1 column catelist" style="width: 10rem; height: 13rem;" id='+cat+'>';
-                                    html += '<img src="./images/'+cat+'.svg" alt="" class="CardImage">';
+                                    html += '<div class="card p1 column catelist" style="width: 9rem; height: 13rem;" id='+cat+'>';
+                                    html += '<img src="./images/'+cat+'.png" alt="" class="CardImage">';
                                     html += '<a href="#" class="text-decoration-none ">';
                                     html += '<h5 class="fw-bold text-dark">'+ formattedCat+'</h5>';
                                     html += '</a>';
@@ -150,8 +150,3 @@ $(document).on("click","#Clear",function(e){
     saveCard(cart);
     renderCard();
 });
-
-
-
-
-

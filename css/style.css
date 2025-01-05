@@ -5,7 +5,7 @@
   border: none;
 }
 .navbar{
-    background-color: rgb(98, 16, 174);
+    background-color: rgb(48, 158, 226);
     height: 200px;
     border: none;
 }
@@ -58,7 +58,7 @@
     box-shadow:none; 
   }
   .btn{
-    width: 100px;
+    
     border-radius: 5px;
     background-color: aquamarine;
   }
@@ -113,9 +113,22 @@
   .btn1{
     width: 200px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: aquamarine;
-    margin-left: 300px;
+    justify-content: end;
+    
+  }
+  .btn1:hover{
+    background-color: brown;
+  }
+  p{
+   font-size: 40px;
+   font-weight: bold;
+  
+  }
+  .titleproduct{
+    display: flex;
+    justify-content: center;
   }
  
   
