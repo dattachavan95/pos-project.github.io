@@ -116,37 +116,53 @@ $(document).on("click","#Clear",function(e){
 })
 
 
-  function renderCard(){
-    if(localStorage.getItem("cart")){
-        var product = localStorage.getItem("cart");
-        product = JSON.parse(product);
+function renderCard() {
+    if (localStorage.getItem("cart")) {
+        var product = JSON.parse(localStorage.getItem("cart"));
         var html = '';
-          var i = 1;
-        product.forEach(data=>{
-                // console.log(data)
-                html += '<tr>';
-                html += '<td>'+i+'</td>';
-                html += '<td> '+data.title+'</td>';
-                html += '<td>'+data.price+'</td>';
-                html += '<td>'+data.qty+'</td>';
-                html += '<td> <a class="btn remove-item" href="#" data-id="' + data.id + '" >Remove <a></td>'; 
+        var i = 1;
+        let TotalQty = 0;
+        let TotalPrice = 0;
+
+        product.forEach(data => {
+            let total = data.price * data.qty;
+            html += '<tr>';
+            html += '<td>' + i + '</td>';
+            html += '<td> ' + data.title + '</td>';
+            html += '<td>' + data.price + '</td>';
+            html += '<td>' + data.qty + '</td>';
+            html += '<td>' + total + '</td>';
+            html += '<td> <a class="btn remove-item" href="#" data-id="' + data.id + '">Remove</a></td>';
             html += '</tr>';
             i++;
-           })
-          $("#card tbody").html(html)
+
+            TotalQty += data.qty;
+            TotalPrice += total;
+        });
+
+        let totalRow = `
+            <tr class="totalprice">
+                <td>=</td>
+                <td>Total Price</td>
+                <td></td>
+                <td>${TotalQty}</td>
+                <td>${TotalPrice.toFixed(2)}</td>
+            </tr>`;
+
+        $("#card tbody").html(html);
+        $("#card tbody").append(totalRow);
     }
-  }
+}
 
-  $(document).on("click", ".remove-item", function (e) {
-    e.preventDefault(); 
-    var productId = $(this).data("id"); 
-    
+
+$(document).on("click", ".remove-item", function (e) {
+    e.preventDefault();
+    var productId = $(this).data("id");
+
     var cart = loadCard();
+    cart = cart.filter(item => item.id !== Number(productId));
 
-   
-    cart = cart.filter(item => item.id !== productId);
-
-    
     saveCard(cart);
     renderCard();
 });
+
