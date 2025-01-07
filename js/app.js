@@ -49,8 +49,8 @@ $(document).on("click", ".catelist", function () {
             let html = "";
 
             response.products.forEach(product => {
-                html += '   <div class="col-lg-4 " >';
-                html += '       <div class="card product" style="width: 18rem;" data-product-id='+product.id+'>';
+                html += '   <div class="col-lg-3 " >';
+                html += '       <div class="card product" style="width: 12rem;" data-product-id='+product.id+'>';
                 html += '            <img src="'+product.thumbnail+'" class="card-img-top" alt="...">';
                 html += '           <div class="card-body">';
                 html += '         <h3 class="card-title">'+product.title+'</h3>';
@@ -166,3 +166,4 @@ $(document).on("click", ".remove-item", function (e) {
     renderCard();
 });
 
+    

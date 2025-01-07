@@ -35,12 +35,13 @@
 .card-text{
     text-align: center;
     color: blue;
-    font-size: 20px;
+    font-size: 12px;
 
 }
 .card-title{
     text-align: center;
     color: rgb(16, 16, 17);
+    font-size: 12px;
    
 }
 
@@ -65,7 +66,7 @@
  
   .card{
     
-    height: 500px;
+    height: 300px;
     margin-top: 20px;
   }
  
