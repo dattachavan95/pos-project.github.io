@@ -34,6 +34,7 @@ $(document).ready(function () {
             initSlider();
         }
     });
+    
 
     // Slider functionality
     function initSlider() {
